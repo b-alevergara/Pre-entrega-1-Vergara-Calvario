@@ -1,27 +1,45 @@
-function usuarioNuevo(_nombreCompleto,edad, _empresa, _codigoPostal ){
-    let nombreCompleto = prompt('Bienvenido, ingresa tu nombre y apellido');
+//tienes funciones que reciben parámetros que no necesitan y luego nunca les pasas
+//variable: usuario.nombre
+//objeto: ${usuario.nombre}
+
+function usuarioNuevo(nombre,edad, empresa, codigoPostal ){
+    let nombre = parseFloat(prompt(`Bienvenido, ingresa tu nombre y apellido`));
     let edad = parseInt(prompt('Que edad tienes?'));
-    let empresa = prompt('A que empresa perteneces?');
+    let empresa = prompt('A que empresa perteneces?'); //como hacer que no salga string null
     let codigoPostal = prompt('Cual es tu codigo postal?')
-    alert(`Su nombre es ${usuarioNuevo.nombreCompleto} de la empresa ${usuarioNuevo.empresa}`);
+
+    alert(`Su nombre es `+ usuarioNuevo.nombre +` de la empresa `+ usuarioNuevo.empresa `)`;
+    console.log(usuarioNuevo())
 }
-console.log(usuarioNuevo())
+
+
 
 
 //alternativa de datos de usuario para poder enlazarlo con html
 function Enviar(){
+    //aqui iria el boton
     console.log("Enviado")
 
-    class usuarioNuevo {
-        constructor(nombre, apellido, edad, codigoPostal) {
+    class Persona {
+        constructor(nombre, edad, empresa, codigoPostal) {
             this.nombre = nombre;
-            this.apellido = apellido;
             this.edad = edad;
+            this.empresa = empresa;
             this.codigoPostal = codigoPostal;
         }
-    }console.log(usuarioNuevo) 
+        informacion(){
+            console.log("El usuario se llama "+ this.nombre + "y pertenece a la empresa " + this.empresa)
+        }
     }
-
+        }
+const nuevaPersona = new Persona( 
+    {nombre: prompt("Bienvenido, ingresa tu nombre"), 
+    edad: parseInt(prompt('Que edad tienes?')), 
+    empresa: prompt("A que empresa perteneces?"), 
+    codigoPostal: parseInt(prompt("Cual es tu codigo postal?"))
+    });
+    nuevaPersona.informacion();
+    
     //inicio de seleccion de productos
     let productos =[
         {nombre: `Caucho granulado`,
@@ -33,26 +51,23 @@ function Enviar(){
         let mensaje = `Que producto desea comprar?`
         let enumerador = 1   
 
-        for(let {} of productos){
+        for(let producto of productos){ //por que no lo lee?no lo llamo en ningun lado
             mensaje += `\n${enumerador}.- ${productos.nombre} - $ ${productos.precio}`
             enumerador++
         }
         mensaje += `\n${enumerador}.- Salir`
         return mensaje
-
-    }prompt(iniciarCompra())
-
-    //el usuario selecciona la cantidad de kilos que desea
-    function cantidadDeProducto (productos){ 
-        return prompt(`Cuantos kilos de ${productos.nombre} desea adquirir?`)
     }
+    prompt(iniciarCompra())
+//poner esto a prueba y ver que sucede, si sigue pidientole al cliente que seleccione productos
+//o solo lo pide una vez?
+    function cantidadDeProducto (productos){ 
+        return parseInt(prompt(`Cuantos kilos de ${productos.nombre} desea adquirir?`))
+    }console.log(cantidadDeProducto)
 
-    //despues se le arroja el mensaje que le indica cuanto va a pagar
-    const calculo = [{precioGranulado}, {precioPulverizado}].reduce((a,b)=>a+b) //aqui me falta sustituir los productos por un ${}pero aun no entiendo muy bien como hacerlo
-    alert(`El costo total de los productos seleccionados es $ ${productos.nombre}*${cantidadDeProducto}`)
-    console.log(calculo)
-
-    //
-
-
-
+    function total(cantidadDeProducto, productos){
+        let calculo = cantidadDeProducto*productos.precio
+        alert(`El total de su compra es de $` + total.calculo)
+        return calculo
+    }
+    console.log(total)
